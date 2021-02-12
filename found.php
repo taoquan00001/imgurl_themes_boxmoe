@@ -29,46 +29,14 @@
         <?php 
                 foreach ($imgs as $img)
                 {
-                    //var_dump($img);
-                    //一些简单的逻辑处理 
+                    
+		//一些简单的逻辑处理 
+		//改回了imgurl原版found缩略图获取方式，解决了imgurl_themes_boxmoe模板获取缩略图出错
                     //获取缩略图地址
                     $thumbpath = thumbnail($img);
-                    //判断图像类型
-                    switch ($img['storage']) {
-                        case 'localhost':
-                            //缩略图地址
-                            $thumburl = $domain.$thumbpath;
-                            //源图像地址
-                            $img_url = $domain.$img['path'];
-                            break;
-                        case 'backblaze':
-                            //缩略图地址
-                            $thumburl = $b2_domain.$img['thumb_path'];
-                            //源图像地址
-                            $img_url = $b2_domain.$img['path'];
-                            break;
-                        case 'cos':
-                            //缩略图地址
-                            $thumburl = $cos_domain.$img['thumb_path'];
-                            //源图像地址
-                            $img_url = $cos_domain.$img['path'];
-                            break;
-                        case 'ftp':
-                            //缩略图地址
-                            $thumburl = $ftp_domain.$img['thumb_path'];
-                            //源图像地址
-                            $img_url = $ftp_domain.$img['path'];
-                            break;
-                        case 'qiniu':
-                            //缩略图地址
-                            $thumburl = $qiniu_domain.$img['thumb_path'];
-                            //源图像地址
-                            $img_url = $qiniu_domain.$img['path'];
-                            break;
-                        default:
-                            # code...
-                            break;
-                    }
+                    $thumburl = $domain.$thumbpath;
+                    //源图像地址
+                    $img_url = $domain.$img['path'];
                     
             ?>
 			<div class="col-sm-6 col-lg-3 boxmoepiclist" id = "img<?php echo $img['id']; ?>">
